@@ -271,3 +271,11 @@ help:
 
 # Default help when no target is specified
 .DEFAULT_GOAL := help
+.PHONY: code-vuln code-go-versions
+code-vuln: ## Scan all Go modules and their standard library with the declared toolchain
+	@result=0; for module in . cmd/mdtest; do \
+		bash scripts/code-vuln.sh "$$module" || result=1; \
+	done; exit $$result
+
+code-go-versions: ## Check module, CI and Docker compiler versions
+	python3 scripts/check-go-versions.py
