@@ -1,6 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: gomod
+    open-pull-requests-limit: 0
     directories: ["/", "/cmd/mdtest"]
     schedule:
       interval: weekly
@@ -9,6 +10,7 @@ updates:
         patterns: ["*"]
         update-types: [minor, patch]
   - package-ecosystem: github-actions
+    open-pull-requests-limit: 0
     directories: ["/"]
     schedule:
       interval: weekly
